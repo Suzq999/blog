@@ -17,11 +17,15 @@ def home():
     articles = Article.query.all()
     user = User.query.first()
     print(user.username)
+
     three_articles = Article.query.order_by(-Article.create_time).all()[:3]
+
+    # articles = db.session.query(Article, Category).filter(Article.cid == Category.cid, Category.cid == aid).all()
+    # categories = Category.query.all()
     return render_template("index.html", **locals())
 
 
-# 2.分类的博客
+# 2.分类的博客 cid
 @bp.route("/list/")
 @bp.route("/list/<int:cid>")
 def list_article(cid=-1):
@@ -44,7 +48,36 @@ def list_article(cid=-1):
 
     # 标签
     tags1 = Tag.query.all()
+    # 改进 以下看是否有错
+    # print(tags1)
+    # for tag in tags1:
+    #     print(tag)
+    # article_tag = db.session.query(Article, Tag).filter(Article.aid == Tag.aid, Tag.tid == tid).all()
     return render_template("blog.html", **locals())
+
+# 2.1 tid 试验能否成功
+# @bp.route("/list1/")
+# @bp.route("/list1/<int:tid>")
+# def list_article1(tid=-1):
+#     if tid < 0:  # 查询默认
+#         tag = Tag.query.first()
+#         tid = tag.tid
+#
+#     # 标签
+#     article_tag = db.session.query(Article, Tag).filter(Article.aid == Tag.aid, Tag.tid == tid).all()
+#
+#
+#     tags = Tag.query.all()
+#     print(tags)
+#     for i in tags:
+#         print(i)
+#     user = User.query.first()
+#
+#     # 最近3篇文章
+#     three_articles = Article.query.order_by(-Article.create_time).all()[:3]
+#
+#
+#     return render_template("blog.html", **locals())
 
 
 # 3.详细的一篇博客
@@ -67,6 +100,9 @@ def one_article(aid=-1):
     three_articles = Article.query.order_by(-Article.create_time).all()[:3]
     # 分类
     categories = Category.query.all()
+    print(categories)
+    for i in categories:
+        print(i)
     # 标签
     tags1 = Tag.query.all()
     print(categories)
