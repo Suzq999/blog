@@ -1,0 +1,708 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0077)https://user.news.cn/user/reg?servicecode=xhbk&gourl=http://blog.home.news.cn -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link href="https://user.news.cn/xhw_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<title>个人注册</title>
+<meta http-equiv="X-UA-Compatible" content="edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/static/css/pbase.css">
+<link rel="stylesheet" type="text/css" href="/static/css/pcommon.css">
+<link rel="stylesheet" type="text/css" href="/static/css/puser_reg.css">
+<link rel="stylesheet" type="text/css" href="/static/css/validate.css">
+<style type="text/css">
+  .error-hint {
+	    height: 30px;
+	    border: 1px #dddddd solid;
+   }
+   .identity-info{
+   		font-size: 14px;
+   }
+</style>
+</head>
+<body>
+<div class="main"> 
+
+<script type="text/javascript">
+var servicecode = 'xhbk';
+var gourl = 'http://blog.home.news.cn';
+var tokenid = 'null';
+var showname = 'null';
+</script>
+<style>
+	.show{display:block;}
+	.hide{display:none;}
+	.fl{float:left;}
+	.fr{float:right;}
+	.clear{clear:both; height:0; font-size:0;overflow:hidden;}
+	#topHeader {
+	    height: 32px;
+	    text-align: center;
+	    border-bottom: 1px solid #c9c9ca;
+	    background: #f9f7f4;
+	}
+	#topHeader .top {
+	    width: 1000px;
+	    margin: 0 auto;
+	    height: inherit;
+	    padding: 0;
+	    border: 0;
+	    outline: none;
+	    list-style: none;
+	    font-weight: normal;
+	    font-style: normal;
+	}
+	#topHeader a {
+	    float: left;
+	    height: 32px;
+	    line-height: 32px;
+	    color: #000;
+	    margin: 0 10px;
+	    font-size: 12px;
+	    cursor: pointer;
+	    outline: none;
+	    text-decoration: none;
+	    padding: 0;
+	    font-weight: normal;
+	    font-style: normal;
+	    font-family: "宋体";
+	}
+	.widthMain {
+	    margin: 0 auto;
+	    width: 1000px;
+	    padding: 10px;
+	}
+	.xhw-logo-font{
+		font-size: 18px;
+		line-height: 85px;
+		color: #0272b4;
+		margin-left: 15px;
+		font-weight: bold;
+	}
+	.login-info{
+		position: absolute;
+		bottom: 10px;
+		right: 10px;
+	}
+	.login-info p{
+		font-size: 14px;
+	}
+	.xhw-bulefont{
+		color: #0272b4;
+	}
+</style>
+<!--头部-->
+<div class="widthMain" style="border-bottom: 1px solid #0272b4; position: relative;">
+	<a class="fl" href="http://www.news.cn/" target="_blank"><img alt="logo" src="/static/img/logo.jpg"></a>
+	<p class="fl xhw-logo-font">全能django</p>
+	<div class="login-info">	    
+        <p class="hide" id="isreg_show" style="display: block;">已有账号，<span class="xhw-bulefont pointer goto_xhwlogin"><a href="{{ url_for('bp.login_user') }}">请登录</a></span></p>
+		<p class="hide" id="notlogin_show" style="display: none;"><span class="xhw-bulefont pointer goto_xhwlogin">登录</span><span class="xhw-bulefont">&nbsp;|&nbsp;</span><span class="xhw-bulefont pointer" id="goto_xhwreg">注册</span></p>
+		<p class="hide" id="login_show" style="display: none;">您好，<span class="xhw-bulefont" id="xhwlogin_name"></span></p>
+	</div>
+	<div class="clear"></div>
+</div>
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript">
+	var xhwloginUrl = "https://user.news.cn/sso/login";
+	var xhwregUrl = "https://user.news.cn/user/reg";	
+	$(function(){
+		//判断是否登录
+		var hrefurl = window.location.href;
+		if(hrefurl.indexOf("/sso/login") > 0){
+			return;
+		}else if(hrefurl.indexOf("/reg") > 0){
+			isregshow();
+		}else if(tokenid=='null'|| tokenid==''){
+        	notloginshow();
+        }else{ 
+        	loginshow(showname);
+        }  
+	})
+	
+	
+	//注册时显示
+	function isregshow(){
+		$('#notlogin_show').hide();$('#login_show').hide();
+		$('#isreg_show').show();
+	}
+	$('.goto_xhwlogin').click(function(){
+		window.location.href = xhwloginUrl;
+	})
+	//未登录显示
+	function notloginshow(){
+		$('#isreg_show').hide();$('#login_show').hide();
+		$('#notlogin_show').show();
+	}
+	$('#goto_xhwreg').click(function(){
+		window.open(xhwregUrl);
+	})
+	//登录时显示,需传入showname
+	function loginshow(showname){
+		$('#xhwlogin_name').text(showname);
+		$('#isreg_show').hide();$('#notlogin_show').hide();
+		$('#login_show').show();
+	}
+</script>
+<!--end-->
+    
+    <!--主体正文开始-->
+  	<div class="content">
+  		<div class="padd">  	
+			<!--面包屑结束-->
+			<div class="greenColumn column_pub_border">
+				<div class="auto">
+		            <div id="tab_setup_1" class="rectangle rectangle-3 active">
+		                1 创建账号
+		                <div class="triangle"></div>
+		            </div>
+		            <div id="tab_setup_2" class="rectangle rectangle-3 right-move">
+		                <div class="triangle-cave"></div>
+		                2 完成
+		            </div>
+        		</div>  	
+        			
+				<div class="auto mt80 setup1 " id="setup1">
+					<form class="cmxform" method="post" id="commentForm" novalidate="novalidate">
+                        {{  form.csrf_token }}
+						<div class="hide mt8 error-hint" id="step1-error">
+							<img class="ml5 mt5 mr5 fl" id="error_icon" src="/static/img/error_icon.png">
+							<img class="hide ml5 mt5 mr5 fl hide" id="right_icon" src="/static/img/right_icon.png">
+							<span class="fl" style="margin-top:4px;" id="step1-error-msg"></span>
+				        </div>
+						<div id="regbyphone">
+							<p class="mt30 title-font" id="setp1title"><font class="red-star">*</font>请输入手机号</p>
+							<div class="mt20 import-div pub-bottom-border">
+								<input type="text" class="{trim:true,require:true,mobilePhone:true} num" name="phone" id="phone" maxlength="11" placeholder="请输入您的手机号码" autocomplete="off">
+                                    {% for error in form.phone.errors %}
+                                        <span> {{ error }}</span>
+                                    {% endfor %}
+{#								<label class="error" for="phonenum" id="phonenumerr"></label>#}
+							</div>
+							<div class="mt15 import-div pub-bottom-border" style="height:35px;">
+								<input style="width:250px;margin-top:12px;" type="text" id="piccode" class="{trim:true,require:true,piccode:true} num" name="code" maxlength="4" placeholder="请输入图片验证码" autocomplete="off">
+								<label class="error" for="piccode" id="piccodeerr" style="top:15px;"></label>
+								<img alt="验证码" class="fr" id="piccodeimg" style="cursor:pointer;width: 100px;height: 34px;" src="{{ url_for('bp.verify_code') }}">
+							    <script>
+                                    var a = document.getElementById("piccodeimg")
+                                    a.onclick = function(){
+                                        this.src = "/verify/?"+Math.random();
+                                    }
+                                </script>
+                            </div>
+                            {% for error in form.code.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+							<div class="fl mt10 import-div pub-bottom-border" style="width:255px;height:35px;">
+								<input class="fl {trim:true,require:true,phonecode:true} num" style="width:230px;margin-top:12px;" type="text" name="sms" id="sms" maxlength="5" placeholder="请输入5位验证码" autocomplete="off">
+{#								<label class="error" style="right:-450px;top:15px;" for="phonecode" id="phonecodeerr"></label>#}
+							</div>
+							<input class="fr mt10 code-button" type="button" id="send" value="获取短信验证码">
+							<div class="clear"></div>
+                            {% for error in form.sms.errors %}
+                                     <span>{{ error }}</span>
+                            {% endfor %}
+{#							<div class="fl mt5 ml5 hide" id="sendcodesuc"><img class="fl" alt="验证码发送成功" src="/static/img/right_icon.png"><span class="fl ml5 codesuc-font">验证码已发送至您的手机，请查收</span></div>#}
+						</div>
+						<p class="mt50 title-font"><font class="red-star">*</font>请设置密码</p>
+                        <div class="mt15 import-div pub-bottom-border">
+                            <input class="import-input {pwd:[&#39;/user/checkpwd&#39;]}" id="password" maxlength="20"
+                                   name="password" type="password" placeholder="8-20位字符，必须由数字、字母或符号两种以上组成"
+                                   autocomplete="off">
+
+                            {% for error in form.password.errors %}
+                                <span> {{ error }}</span>
+                            {% endfor %}
+
+                            {#							<label id="pwdlabel" class="error" style="z-index:999;" for="password"></label><span class="pwdpassmsg"></span>#}
+                        </div>
+                        <div class="mt20 import-div pub-bottom-border">
+                            <input class="import-input {required:true,equalTo:&#39;#password&#39;}" id="pwdagain"
+                                   name="confirm" maxlength="20" type="password" placeholder="请再次输入密码"
+                                   autocomplete="off">
+                            {% for error in form.confirm.errors %}
+                                <span> {{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+						
+                        <p class="mt30 title-font" id="setp1title">&nbsp;&nbsp;请输入昵称</p>
+						<div class="mt20 import-div pub-bottom-border">
+							<input type="text" class="{trim:true,nickname:true}" name="username" id="nickname" maxlength="18" placeholder="请输入昵称">
+{#						    <label class="error" for="nickname" id="nicknameerror"></label>#}
+						    {% for error in form.username.errors %}
+                                <span> {{ error }}</span>
+                            {% endfor %}
+                        </div>
+						<div class="fl mt10 ml10 agreementcheck"><img id="isagree" src="/static/img/uncheck_icon.png"></div>
+						<p class="fl mt8 ml10 agreement-font"><font class="red-star">*</font>我已阅读并同意 <span class="register-agree-font">《 注册协议 》</span></p>
+						<input class="mt60 blue-button400 themebgc submit" style="height:35px;line-height:35px;" type="submit" value="注册">
+					</form>
+					<div class="mt20"></div>
+				</div>
+								
+				<div class="auto mt120 setup3 hide" id="setup3">
+					<img src="/static/img/success_icon.png" alt="成功">
+					<p class="mt20 authentication-font usercenter" style="display: none;">注册成功，您可以进入 <span id="reglogin">个人中心</span>。</p>
+					<p class="mt20 authentication-font carryon hide" style="display: block;">注册成功，您可以 <span id="back">继续操作</span>。</p>
+					<p class="mt20 carryon hide" style="font-size: 14px; display: block;" 微软雅黑",arial;"="">本页面将在<span id="close">5</span>秒后自动跳转</p>
+					<div class="mt80"></div>
+        		</div>
+        		
+				<!-- 找回手机号继续注册流程结束 -->
+				<div class="clear"></div>
+			</div>
+		<div class="clear"></div>
+	 </div>
+	</div>
+</div>
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/jsencrypt.js"></script>
+<script type="text/javascript" src="/static/js/pmExtJquery.js"></script>
+
+
+
+<script type="text/javascript" src="/static/js/jquery.validate.js"></script>
+<script type="text/javascript" src="/static/js/jquery.metadata.js"></script>
+
+	<script type="text/javascript" src="/static/js/messages_cn.js"></script>
+
+<script type="text/javascript" src="/static/js/additional-methods.js"></script>
+
+
+
+
+
+	<script type="text/javascript" src="/static/js/pbase.js"></script>
+
+
+<script type="text/javascript" src="/static/js/placeholderfriend.js"></script>
+<script type="text/javascript" src="/static/js/dialogpage.js"></script>
+{#<script type="text/javascript">
+
+	var pm = pm || {};
+	pm.path= "/";
+	pm.path = pm.path.split(';')[0];
+	var verifyurl = "/sso/verifyimg_edit";
+	var url = "/user";
+	var checkPiccodeUrl = url + "/checkpiccode";
+	var checkNickNameUrl = url + "/checknickname";
+	var checkCodeUrl = url + "/checkcode";
+	var sendPhoneCodeUrl = url + "/regsendcode";
+	var submitUrl = url + "/reguser";
+	var loginUrl = url + "/reglogin";
+	var truenameUrl = url +"/truename";
+
+	var getmobileUrl = url + "/getmobile";
+	var getmobileSaveUrl = url + "/getmobileSave";
+	var getmobileLoginUrl = url + "/getmobileLogin";
+
+	var piccodeflag = false;
+	var serialnum = "";
+	var isagree = false;
+	var gourl="http://blog.home.news.cn",extargs="",servicecode="xhbk";
+	var pwdin;//找回手机号继续注册流程开始 -- 输入密码
+
+	$(function(){
+		$("#commentForm").validate({
+	        submitHandler:function(form){
+	        	if(!isagree){
+	        		//提示请先阅读用户注册协议
+	  	   			alert("请先阅读用户注册协议");
+	  	   			return;
+	  	   		}
+	  	   		var mobilephone = $("#phonenum").val();
+	  	   		var code = $("#phonecode").val();
+	  	   		var password = $("#password").val();
+	  	   		var nickname=$("#nickname").val();
+	  	   		if((!mobilephone)||(!code)||(!password)){
+	   	   			return;
+	  	   		}
+		  	  	$.ajax({
+		  	  		async:false,
+		  	  	 	type:"post",
+		  	  		url: submitUrl,
+					data: {"phonenum":pm.encode.RSA(mobilephone),"phonecode":code,"password":pm.encode.RSA(password),"nickname":nickname},
+		  	  		success: function(r){
+		  	  			if(r&&r.code=='0'){
+					  	  	serialnum = r.attr;
+					  	    $('#setup1').hide();
+							$('#setup3').show();
+							$('#tab_setup_2').addClass('active');
+							countDown(5);
+		  	  			}else{
+		  	  				$("#step1-error-msg").html(r.msg);
+		  	  				$("#step1-error").show();
+		  	  				$("#setp1title").css("margin-top",10);
+		  	  			}
+		        	}
+		  	  	});
+	        },
+	        success: function(label) {
+	        	if('phonenumerr' == label.attr('id')){
+	        		var result = "<img class='fl ml5 mr5' style='width:16px;height:16px;' src='../static/images/client/pc/blue_info_icon.png'/><span class='fl'>完成验证后，您可以用该手机登录或找回密码</span><br/>";
+	        		label.html(result).addClass("error_more");
+	        	} else {
+			    	label.html("").addClass("error_right");
+	        	}
+	        }
+	    });
+    	//更新验证码
+		$("#piccodeimg").click();
+    });
+
+	//图片验证码
+	$('#piccodeimg').click(function(){
+		var picurl = verifyurl+"?rd="+Math.random();
+		piccodeflag = false;
+		$(this).attr("src",picurl);
+	})
+
+
+	//昵称检测
+	jQuery.validator.addMethod("nickname", function(value, element) {
+	    $(element).next().removeClass("error_right");
+	    var result = "";
+	    var flag = true;
+	    if(value.replace(/(\s*$)/g, '').length>0){
+	    	 $.ajax({
+		 	  	  	async:false,
+		   	  	 	type:"post",
+		   	  		url: checkNickNameUrl,
+		 			data:{"nickname":value},
+		   	  		success: function(r){
+			   	  		if(r.code != '0'){
+			    			result = "<img class='fl mr5' src=\"/static/images/client/pc/errormsg_icon.png\"/><span class='fl'>"+r.msg+"</span>";
+			    			flag = false;
+			    		}else{
+			    			flag = true;
+			    		}
+		         	}
+		   	  });
+	    }
+	    $(element).data('error-msg',result);
+	    return flag;
+	} ,function(params, element) {
+	    return $(element).data('error-msg');
+	})
+
+
+	//图片验证码
+	jQuery.validator.addMethod("piccode", function(value, element) {
+	    $(element).next().removeClass("error_right");
+	    var result = "";
+	    var flag = false;
+	    if(''==value){
+	    	result = "<img class='fl mr5' src=\"/static/images/client/pc/errormsg_icon.png\"/><span class='fl'>这是必填字段</span>";
+	    	$(element).data('error-msg',result);
+	    	flag = false;
+	    	piccodeflag = false;
+	    }else if((value.length > 0 )&&( value.length!=4)){
+	    	result = "<img class='fl mr5' src=\"/static/images/client/pc/errormsg_icon.png\"/><span class='fl'>请输入4位验证码</span>";
+	    	$(element).data('error-msg',result);
+	    	flag = false;
+	    	piccodeflag = false;
+	    }else{
+	    	 $.ajax({
+	 	  	  	async:false,
+	   	  	 	type:"post",
+	   	  		url: checkPiccodeUrl,
+	 			data:{"piccode":value},
+	   	  		success: function(r){
+		   	  		if(r.code != '0'){
+		    			result = "<img class='fl mr5' src=\"/static/images/client/pc/errormsg_icon.png\"/><span class='fl'>"+r.msg+"</span>";
+		    			piccodeflag = false;
+		    			flag = false;
+		    		}else{
+		    			piccodeflag = true;
+		    			flag = true;
+		    		}
+	         	}
+	   	  	});
+	    }
+	    $(element).data('error-msg',result);
+	    return flag;
+	} ,function(params, element) {
+	    return $(element).data('error-msg');
+	})
+
+	//短信验证码
+	jQuery.validator.addMethod("phonecode", function(value, element) {
+	    $(element).next().removeClass("error_right");
+	    var result = "";
+	    var flag = false;
+	    var mobilephone = $("#phonenum").val();
+	    var piccodevalue = $("#piccode").val();
+	    if(!mobilephone||(false == validatemobile(mobilephone))){
+			$("#phonenumerr").attr("style","display: inline;");
+			if(!mobilephone){
+				$("#phonenumerr").html("<img class='fl mr5' src=\"/static/images/client/pc/errormsg_icon.png\"/><span class='fl'>这是必填字段</span>");
+			}else{
+				$("#phonenumerr").html("<img class='fl mr5' src=\"/static/images/client/pc/errormsg_icon.png\"/><span class='fl'>请正确填写您的手机号码</span>");
+			}
+			result = "<span></span>";
+			$("#phonenum").focus();
+	    	flag = false;
+		}else if(!piccodevalue||(false == piccodeflag)){
+			//短信验证码必填
+			var piccodeerr = $("#piccodeerr").html();
+			if(!piccodevalue){
+				$("#piccodeerr").html("<img class='fl mr5' src=\"/static/images/client/pc/errormsg_icon.png\"/><span class='fl'>这是必填字段</span>");
+			}else if(piccodevalue.length != 4){
+				$("#piccodeerr").html("<img class='fl mr5' src=\"/static/images/client/pc/errormsg_icon.png\"/><span class='fl'>请输入4位验证码</span>");
+			}else{
+				$("#piccodeerr").html("<img class='fl mr5' src=\"/static/images/client/pc/errormsg_icon.png\"/><span class='fl'>请输入正确验证码</span>");
+			}#}
+{#			result = "<span></span>";#}
+{#			$("#piccode").focus();#}
+{#	    	flag = false;#}
+{#		}else if(value.length != 5){#}
+{#			if(value.length == 0){#}
+{#				result = "<img class='fl mr5' src=\"/static/images/client/pc/errormsg_icon.png\"/><span class='fl'>这是必填字段</span>";#}
+{#			} else {#}
+{#		    	result = "<img class='fl mr5' src=\"/static/images/client/pc/errormsg_icon.png\"/><span class='fl'>请输入5位验证码</span>";#}
+{#			}#}
+{#	    	$(element).data('error-msg',result);#}
+{#	    	flag = false;#}
+{#	    }else{#}
+{#	    	$.ajax({#}
+{#	 	  	  	async:false,#}
+{#	   	  	 	type:"post",#}
+{#	   	  		url: checkCodeUrl,#}
+{#	 			data:{"code":value,"mobilephone":pm.encode.RSA(mobilephone)},#}
+{#	   	  		success: function(r){#}
+{#		   	  		if(r.code != '0'){#}
+{#		    			result = "<img class='fl mr5' src=\"/static/images/client/pc/errormsg_icon.png\"/><span class='fl'>"+r.msg+"</span>";#}
+{#		    			flag = false;#}
+{#		    		}else{#}
+{#		    			flag = true;#}
+{#		    		}#}
+{#	         	}#}
+{#	   	  	});#}
+{#	    }#}
+{# 		$(element).data('error-msg',result);#}
+{# 		return flag;#}
+{#	} ,function(params, element) {#}
+{#	    return $(element).data('error-msg');#}
+{#	})#}
+{#	#}
+{#	#}
+{#	//发送短信验证#}
+{#	$("#sendcode").click(function(){#}
+{#		var $this = $(this);#}
+{#		var mobilephone = $("#phonenum").val();#}
+{#		var piccodevalue = $("#piccode").val();#}
+{#	    if(!mobilephone||(false == validatemobile(mobilephone))){#}
+{#			$("#phonenumerr").attr("style","display: inline;");#}
+{#			if(!mobilephone){#}
+{#				$("#phonenumerr").html("<img class='fl mr5' src=\"/static/images/client/pc/errormsg_icon.png\"/><span class='fl'>这是必填字段</span>");#}
+{#			}else{#}
+{#				$("#phonenumerr").html("<img class='fl mr5' src=\"/static/images/client/pc/errormsg_icon.png\"/><span class='fl'>请正确填写您的手机号码</span>");#}
+{#			}#}
+{#			$("#phonenum").focus();#}
+{#			return ;#}
+{#		}else if(!piccodevalue||(false == piccodeflag)){#}
+{#			//图片验证码必填#}
+{#			var piccodeerr = $("#piccodeerr").html();#}
+{#			if(!piccodevalue){#}
+{#				$("#piccodeerr").html("<img class='fl mr5' src=\"/static/images/client/pc/errormsg_icon.png\"/><span class='fl'>这是必填字段</span>");#}
+{#			}else if(piccodevalue.length != 4){#}
+{#				$("#piccodeerr").html("<img class='fl mr5' src=\"/static/images/client/pc/errormsg_icon.png\"/><span class='fl'>请输入4位验证码</span>");#}
+{#			}else{#}
+{#				$("#piccodeerr").html("<img class='fl mr5' src=\"/static/images/client/pc/errormsg_icon.png\"/><span class='fl'>请输入正确验证码</span>");#}
+{#			}#}
+{#			$("#piccodeerr").show();#}
+{#			$("#piccode").focus();#}
+{#			return ;#}
+{#		}else{#}
+{#			if(!$this.prop("disabled")){#}
+{#				$.ajax({#}
+{#		 	  	  	async:false,#}
+{#		   	  	 	type:"post",#}
+{#		   	  		url: sendPhoneCodeUrl,#}
+{#		 			data:{"mobilephone" : pm.encode.RSA(mobilephone)},#}
+{#		   	  		success: function(r){#}
+{#			   	  		if(r.code=="0"){#}
+{#							$this.attr("disabled", true);#}
+{#							$('#sendcodesuc').show();#}
+{#							time($this,"短信");#}
+{#							$('#phonecode').val("");#}
+{#							$("#phonecodeerr").hide();#}
+{#						}else if(r.code == "regSendcode_mobilephone_exist"){#}
+{#							//取回手机号流程#}
+{#							openDialogPage({#}
+{#								width: 420,#}
+{#								height: 290,#}
+{#								url: getmobileUrl + "?mobilephone=" + mobilephone,#}
+{#								callback: function(r){#}
+{#									if(r){#}
+{#										serialnum = r.serialnum;#}
+{#										var idcard = r.idcard;#}
+{#										var username = r.username;#}
+{#										var mobile = $("#phonenum").val();#}
+{#										$("#default-mobile").val(mobile);#}
+{#										$("#default-mobile").keyup();#}
+{#										$("#setup1").hide();#}
+{#										$("#setup1-default").show();#}
+{#										$("#idcard-default").val(idcard);#}
+{#										$("#idcard-default").keyup();#}
+{#										$("#username-default").val(username);#}
+{#										$("#username-default").keyup();#}
+{#										if(isagree){#}
+{#											$("#findphone_isagree").attr("src","/static/images/client/pc/checked_icon.png");#}
+{#										}else{#}
+{#											$("#findphone_isagree").attr("src","/static/images/client/pc/uncheck_icon.png");#}
+{#										}#}
+{#									}#}
+{#								}#}
+{#							});#}
+{#							$("#phonecodeerr").hide();#}
+{#						}else{#}
+{#							$("#phonecodeerr").show();#}
+{#							$("#phonecodeerr").html("<img class='fl mr5' src=\"/static/images/client/pc/errormsg_icon.png\"/><span class='fl'>"+r.msg+"</span>");#}
+{#						}#}
+{#		         	}#}
+{#		   	  	});#}
+{#			}#}
+{#		}#}
+{#	})#}
+{#	#}
+{#	//判断是否存在servicecode或者gourl,显示继续操作#}
+{#	$(function(){#}
+{#		if(servicecode || gourl){#}
+{#			$('.usercenter').hide();#}
+{#			$('.carryon').show();#}
+{#		}#}
+{#	})#}
+{#	#}
+{#	//立即登录#}
+{#	$('#reglogin').click(function(){#}
+{#		var toUrl = loginUrl+"?serialnum="+serialnum;#}
+{#		/* if(servicecode){#}
+{#			toUrl = toUrl+"&servicecode="+servicecode;#}
+{#		}#}
+{#		if(gourl){#}
+{#			toUrl = toUrl+"&gourl="+escape(gourl);#}
+{#		}#}
+{#		if(extargs){#}
+{#			toUrl = toUrl+"&extargs="+escape(extargs);#}
+{#		} */#}
+{# 		window.location.href= toUrl;#}
+{#	})#}
+{#	//继续操作#}
+{#	$('#back').click(function(){#}
+{#		var toUrl = loginUrl+"?serialnum="+serialnum;#}
+{#		if(servicecode){#}
+{#			toUrl = toUrl+"&servicecode="+servicecode;#}
+{#		}#}
+{#		if(gourl){#}
+{#			toUrl = toUrl+"&gourl="+escape(gourl);#}
+{#		}#}
+{#		if(extargs){#}
+{#			toUrl = toUrl+"&extargs="+escape(extargs);#}
+{#		}#}
+{# 		window.location.href= toUrl;#}
+{#	})#}
+{#	//5秒后关闭页面#}
+{#	function countDown(secs){     #}
+{#		 var jumpTo = document.getElementById('close');#}
+{#		 jumpTo.innerHTML=secs;  #}
+{#		 if(--secs>0){     #}
+{#		     setTimeout("countDown("+secs+")",1000);     #}
+{#		 } else{       #}
+{#			 $('#back').click();#}
+{#		}     #}
+{#    } #}
+{#	#}
+{#	//阅读同意#}
+{#	$('.agreementcheck').click(function(){#}
+{#		if(isagree){#}
+{#			$("#isagree").attr("src","/static/images/client/pc/uncheck_icon.png");#}
+{#			isagree = false;#}
+{#		}else{#}
+{#			$("#isagree").attr("src","/static/images/client/pc/checked_icon.png");#}
+{#			isagree = true;#}
+{#		}#}
+{#	})#}
+{#	#}
+{#	//阅读同意#}
+{#	$('.register-agree-font').click(function(){#}
+{#		$(document.body).css({'overflow-y':'hidden','padding':'0 17px 0 0'});#}
+{#		openDialogPage({#}
+{#			width: 750,#}
+{#			height: 550,#}
+{#			title: "用户注册协议",#}
+{#			url: "/user/regprotocol",#}
+{#			callback: function(){#}
+{#				if(!isagree){#}
+{#					$("#isagree").attr("src","/static/images/client/pc/checked_icon.png");#}
+{#					$("#findphone_isagree").attr("src","/static/images/client/pc/checked_icon.png");#}
+{#					isagree = true;#}
+{#				}#}
+{#			}#}
+{#		})#}
+{#	})#}
+{#	var callFn = function(){ //easydialog本身callback事件#}
+{#		$(document.body).css({'overflow-y':'auto','padding':'0'});#}
+{#	};#}
+{#</script>#}
+
+
+
+
+
+{#<style>#}
+{#	.adBottom {#}
+{#	    background: #FFF;#}
+{#	    padding: 20px 0;#}
+{#	}  #}
+{#	.footer {#}
+{#		font-size: 12px;#}
+{#	    font-family: "宋体";#}
+{#	    color: #454545;#}
+{#	    line-height: 22px;#}
+{#	    padding: 10px 0 30px 0;#}
+{#	    background: #FFF;#}
+{#	    text-align: center;#}
+{#	}#}
+{#</style>#}
+{#<div id="bottomBody">#}
+{#	<div class="adBottom domPC">#}
+{#		<div class="widthMain"></div>#}
+{#	</div>#}
+{#	<div class="domMobile"></div>#}
+{#	<div class="footer">#}
+{#<p>Copyright © 2000 - 2018 XINHUANET.com　All Rights Reserved.</p>#}
+{#<p>制作单位：新华网股份有限公司　　版权所有 新华网股份有限公司</p>#}
+{#	</div>#}
+{#</div>#}
+
+
+</body></html>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+     $("#send").click(function () {
+        num = 5;
+        $(this).attr('disabled',true);
+        $(this).prop('value',""+num+"秒后发送");
+        let _this = this;  //this表示当前按钮
+        var timer = setInterval(function () {
+            num -= 1;
+            if (num <0){
+                $(_this).attr('disabled',false);
+                $(this).prop('value',"发送验证码")
+                return
+            }
+            $(_this).prop('value',""+num+"秒后发送");
+            console.log(num)
+        },1000);
+        let phone = $("#phone").val();
+        let csrf = $("[name='csrf_token']").val();
+        // 发送短信验证码
+        //ajax
+        $.post("/send/",{'phone':phone,'csrf_token':csrf},function (data) {
+            console.log(data)
+        })
+
+    })
+</script>

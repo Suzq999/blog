@@ -1,0 +1,107 @@
+@charset "utf-8";
+/* CSS Document */
+input:-webkit-autofill,textarea:-webkit-autofill,select:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px #ededed inset; }
+/*登录区域*/
+.login-bg{
+	width: 100%;
+	height: 600px;
+	background-color: #0071b4;
+	top: -1px;
+    position: relative;
+}
+.login-div{
+	width: 1000px;
+	height: 100%;
+	margin: 0 auto;
+}
+.login-area{
+	width: 380px;
+	margin: 80px 30px 0 0;
+	background-color: #FFF;
+	border-radius: 5px;
+	padding: 30px 0;
+}
+.login-way{
+	width: 100%;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	font-size: 18px;
+	color: #595959;
+}
+.login-way-active{
+	color: #000;
+}
+.loginpwd-way{
+	width: 300px;
+	margin: 0 auto;
+}
+.logininfo{
+	width: 100%;
+	height: 40px;
+	line-height:40px;
+	border: 0;
+	background-color: #ededed;
+	border-radius: 3px;
+	font-size: 15px;
+	padding-left: 15px;
+	box-sizing:border-box;
+}
+.input_msg {
+    color: #6d6d6d;
+    font-size: 15px;
+    line-height: 40px;
+    padding-left: 10px;
+    position: absolute;
+    left: 5px;
+    top: 15px;
+}
+.errorinfo{
+	font-size: 14px;
+	color: #EE6666;
+	margin-left: 5px;
+	line-height: 21px;
+}
+.tenday-login{
+	font-size: 14px;
+}
+.forgetpwd{
+	font-size: 14px;
+	color: #0071b4;
+	cursor: pointer;
+	line-height: 21px;
+}
+.btn-login{
+	width: 300px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 18px;
+	border: 0;
+	cursor: pointer;
+}
+.btn-login:ACTIVE {
+	background-color: #5087b2;
+}
+
+.change-login {
+    height: 20px;
+}
+.third-party-login-span:first-child{
+	display: none;
+}
+.third-party-login-span {
+    font-size: 12px;
+    line-height: 20px;
+    color: #898989;
+}
+
+/* 登录页面不需要输入框下划线 */
+.pub-bottom-border{ border-bottom: 0px;}
+.pub-bottom-border-blue{ border-bottom: 0px;}
+
+
+
+
+
+

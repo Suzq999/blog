@@ -1,0 +1,85 @@
+@charset "utf-8";
+/* CSS Document */
+
+.cmxform {
+}
+.cmxform label{
+    width: 300px;
+    position: absolute;
+    right: -305px;
+    top: 10px;
+    font-size: 14px;
+	line-height: 16px;
+	color: #000;
+    border: 0;
+    padding: 0;
+}
+.cmxform labe:before, .cmxform label:after {
+    display:none; 
+}
+.cmxform label span{
+	width: 275px;
+}
+.cmxform label.error_more {
+	display:none;
+	width: 220px;
+	position: absolute;
+	right: -250px;
+	top: -20px;
+    padding: 10px 5px;
+    border: 1px solid #bebebe;  
+    background: #FFF;
+}
+.cmxform label.error_more span{
+    width: 179px;
+}
+.cmxform label.error_more:before, .cmxform label.error_more:after {  
+    content: "";  
+    display:block;  
+    position: absolute;  
+    top: 35px;
+    width: 0;  
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-right: 14px solid transparent;
+}
+.cmxform label.error_more:before {  
+    left: -12px;  
+    border-right-color: #FFF;  
+    z-index: 1;  
+}
+.cmxform label.error_more:after {  
+    left: -15px;  
+    border-right-color: #bebebe;  
+    z-index: 0;  
+} 
+.cmxform label.error_right{
+    background: url("../../../../../static/images/client/pc/errorright_icon.png") no-repeat;
+}
+.cmxform label.error_right:before, .cmxform label.error_right:after {
+    display:none; 
+}
+
+.cmxform label#mobilePhone-error{
+    width: 200px;
+    position: absolute;
+    right: -205px;
+    top: 10px;
+    border: 0;
+    padding: 0;
+} 
+.cmxform label#mobilePhone-error:before, .cmxform label#mobilePhone-error:after {
+    display:none; 
+} 
+
+/*展示密码强度信息*/
+.pwdpassmsg{    
+	position: absolute;
+    width: 200px;
+    right: -225px;
+    top: 5px;
+    font-size: 14px;
+    line-height: 24px;
+    color: #000;
+}

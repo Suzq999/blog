@@ -1,0 +1,6 @@
+DEBUG = True
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:123456@127.0.0.1:3306/blog'
+SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+#设置签名加密  session使用
+SECRET_KEY = 'AEWZSRXHDG@#$^%ESFD'

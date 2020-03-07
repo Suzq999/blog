@@ -1,0 +1,176 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.setup1{
+	width: 400px;
+}
+.register-mode{ height: 40px; }
+.register-mode-div{ 
+	width: 80px; 
+	height: 39px; 
+	text-align: center; 
+	cursor: pointer;
+}
+.mode-font{ 
+	line-height: 39px; 
+	font-weight: bold; 
+	color: #6f6f6f; 
+	font-size: 18px; 
+}
+.register-active{ 
+	color: #005095; 
+	border-bottom: 1px #005095 solid; 
+}
+.register-active span{ color: #005095;}
+
+.codesuc-font{
+	font-size: 14px;
+	line-height: 20px;
+	color: #898989;
+	width: 365px;
+}
+/*通用*/
+.title-font{
+	font-size: 16px;
+	font-weight: bold;
+}
+.nophone-font{
+	font-size: 14px;
+	color: #727272;
+	line-height: 25px;
+	font-weight:normal;
+}
+.idcardcheck {
+    font-size: 14px;
+    color: #727272;
+    line-height: 19px;
+    font-weight: normal;
+}
+.phone-font{
+	font-size: 14px;
+	color: #3a99fc;
+	line-height: 19px;
+	font-weight:normal;
+	cursor: pointer;
+}
+.greenpass-font{
+	color: #3a99fc;
+	cursor: pointer;
+}
+.agreement-font{
+	font-size: 13px;
+	color: #6a6a6a;
+	font-weight: bold;
+}
+.register-agree-font{
+	color: #3a99fc;
+	cursor: pointer;
+}
+
+.setup2{
+	width: 400px;
+}
+/*错误信息提示*/
+.info-hint{
+	border: 1px #dddddd solid;
+}
+.info-hint p{
+	width: 350px;
+	font-size: 14px;
+	line-height: 18px;
+	color: #686868;
+}
+.hint-title-font{
+	color: #004e91;
+	font-size: 15px;
+}
+.hint-font{
+	font-size: 15px;
+}
+.appeal-font{
+	color: #004e91;
+	cursor: pointer;
+}
+
+.setup3{
+	width: 400px;
+	text-align: center;
+}
+.authentication-font{
+	font-size: 15px;
+	font-weight: bold;
+	color:#000000;
+}
+.authentication-font span {
+	color: #004e91;
+	cursor: pointer;
+}
+
+/*用户登录名注册样式*/
+.greenColumn{
+	padding: 40px 283px 50px 283px;
+}
+.idcarbind{
+	color: #6f6f6f;
+	font-size: 14px;
+	font-weight: normal;
+}
+
+/*找回手机页面样式(小窗口)*/
+.getmobileColumn{
+	padding: 25px 30px 25px 30px;
+}
+.msg-font{
+	font-size: 15px;
+	text-align: center;
+	color: #6f6f6f;
+}
+.red-hint{
+	color: #ec6767;
+	font-size: 18px;
+	text-align: center;
+	font-weight: bold;
+}
+.info-font{
+	font-size: 15px;
+	text-align: center;
+	color: #6f6f6f;
+}
+.button-div{
+	text-align: center;
+}
+.solid-line{
+	border-bottom: 1px solid #a3a3a3;
+}
+.getback-font{
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+}
+.msg-title{
+	font-size: 18px;
+	letter-spacing:1px;
+	text-align: center;
+}
+.authmsg-title{
+	font-size: 18px;
+	letter-spacing:1px;
+	width: 100px;
+	margin: 0 auto;
+}
+.failmsg-title-img{
+	float: left;
+	margin-top: 5px;
+}
+.successmsg-title-img{
+	float: left;
+	margin-top: 3px;
+}
+.authmsg{
+	text-align: center;
+	font-size: 14px;
+	line-height: 20px;
+	color: #000;
+}
+

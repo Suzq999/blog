@@ -1,0 +1,135 @@
+{% extends 'common/base.html' %}
+{% block content %}
+    <div class="container">
+      <div class="row">
+        <!-- Latest Posts -->
+        <main class="posts-listing col-lg-8"> 
+          <div class="container">
+            <div class="row">
+            {% for i in range(0,article_num,2) %}
+              <!-- post -->
+              <div class="post col-xl-6">
+                <div class="post-thumbnail"><a href="{{ url_for('bp.one_article', aid=articles[i][0].aid) }}"><img src="{{ url_for('static', filename=articles[i][0].picture) }}" alt="..." class="img-fluid"></a></div>
+                <div class="post-details">
+                  <div class="post-meta d-flex justify-content-between">
+                    <div class="date meta-last">{{articles[i][0].create_time}}</div>
+                    <div class="category"><a href="#">Business</a></div>
+                  </div><a href="{{ url_for('bp.one_article', aid=articles[i][0].aid) }}">
+                    <h3 class="h4">{{ articles[i][0].title }}</h3></a>
+                  <p class="text-muted">{{ articles[i][0].content }}</p>
+                  <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
+                      <div class="avatar"><img src="{{ url_for('static', filename=user.portrait) }}" alt="..." class="img-fluid"></div>
+                      <div class="title"><span>{{ user.username }}</span></div></a>
+                    <div class="date"><i class="icon-clock"></i>{{articles[i][0].create_time}}</div>
+                    <div class="comments meta-last"><i class="icon-comment"></i>{{articles[i][0].replies}}</div>
+                  </footer>
+                </div>
+              </div>
+
+              {% if i < article_num - 1 %}
+              <!-- post -->
+              <div class="post col-xl-6">
+                <div class="post-thumbnail"><a href="{{ url_for('bp.one_article', aid=articles[i+1][0].aid) }}"><img src="{{url_for('static', filename=articles[i+1][0].picture)}}" alt="..." class="img-fluid"></a></div>
+                <div class="post-details">
+                  <div class="post-meta d-flex justify-content-between">
+                    <div class="date meta-last">{{articles[i+1][0].create_time}}</div>
+                    <div class="category"><a href="#">Business</a></div>
+                  </div><a href="{{ url_for('bp.one_article', aid=articles[i+1][0].aid) }}">
+                    <h3 class="h4">{{ articles[i+1][0].title }}</h3></a>
+                  <p class="text-muted">{{ articles[i+1][0].content }}</p>
+                  <div class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
+                      <div class="avatar"><img src="{{ url_for('static', filename=user.portrait) }}" alt="..." class="img-fluid"></div>
+                      <div class="title"><span>{{ user.username }}</span></div></a>
+                    <div class="date"><i class="icon-clock"></i> {{ articles[i+1][0].create_time }}</div>
+                    <div class="comments meta-last"><i class="icon-comment"></i>{{ articles[i+1][0].reples }}</div>
+                  </div>
+                </div>
+              </div>
+              {% else %}
+                  <div class="post col-xl-6">
+                <div class="post-thumbnail"><a href="post.html"><img src={{ url_for('static', filename=articles[i][0].picture) }}" alt="..." class="img-fluid"></a></div>
+                <div class="post-details">
+                  <div class="post-meta d-flex justify-content-between">
+                    <div class="date meta-last">无</div>
+                    <div class="category"><a href="#">Business</a></div>
+                  </div><a href="post.html">
+                    <h3 class="h4">无</h3></a>
+                  <p class="text-muted">文章不存</p>
+                  <div class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
+                      <div class="avatar"><img src={{ url_for('static',filename=user.portrait) }} alt="..." class="img-fluid"></div>
+                      <div class="title"><span>{{ user.username}}</span></div></a>
+                    <div class="date"><i class="icon-clock"></i> </div>
+                    <div class="comments meta-last"><i class="icon-comment"></i>0</div>
+                  </div>
+                </div>
+              </div>
+                {% endif %}
+            {% endfor %}
+            <!-- Pagination -->
+            <nav aria-label="Page navigation example">
+              <ul class="pagination pagination-template d-flex justify-content-center">
+                <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
+                <li class="page-item"><a href="#" class="page-link active">1</a></li>
+                <li class="page-item"><a href="#" class="page-link">2</a></li>
+                <li class="page-item"><a href="#" class="page-link">3</a></li>
+                <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-right"></i></a></li>
+              </ul>
+            </nav>
+          </div>
+        </main>
+        <aside class="col-lg-4">
+          <!-- Widget [Search Bar Widget]-->
+          <div class="widget search">
+            <header>
+              <h3 class="h6">Search the blog</h3>
+            </header>
+            <form action="#" class="search-form">
+              <div class="form-group">
+                <input type="search" placeholder="What are you looking for?">
+                <button type="submit" class="submit"><i class="icon-search"></i></button>
+              </div>
+            </form>
+          </div>
+          <!-- Widget [Latest Posts Widget]        -->
+          <div class="widget latest-posts">
+            <header>
+              <h3 class="h6">Latest Posts</h3>
+            </header>
+              {% for article in three_articles %}
+            <div class="blog-posts"><a href="{{ url_for('bp.one_article', aid=article.aid) }}">
+
+                <div class="item d-flex align-items-center">
+                  <div class="image"><img src="{{ url_for('static',filename=article.picture) }}" alt="..." class="img-fluid"></div>
+                  <div class="title"><strong>{{ article.title }}</strong>
+                    <div class="d-flex align-items-center">
+                      <div class="views"><i class="icon-eye"></i> {{ article.hits }}</div>
+                      <div class="comments"><i class="icon-comment"></i>{{ article.replies }}</div>
+                    </div>
+                  </div>
+                </div></a><a href="#">
+                {% endfor %}
+            </div>
+          <!-- Widget [Categories Widget]-->
+          <div class="widget categories">
+            <header>
+              <h3 class="h6">分类</h3>
+            </header>
+              {% for category in categories %}
+             <div class="item d-flex justify-content-between"><a href="{{ url_for('bp.list_article',cid=category.cid) }}">{{category.name}}</a><span>{{ category.num }}</span></div>
+             {% endfor %}
+          </div>
+          <!-- Widget [Tags Cloud Widget]-->
+          <div class="widget tags">       
+            <header>
+              <h3 class="h6">Tags</h3>
+            </header>
+            <ul class="list-inline">
+                {% for j in tags1 %}
+              <li class="list-inline-item"><a href="#" class="tag">{{ j.name }}</a></li>
+                {% endfor %}
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+{% endblock %}

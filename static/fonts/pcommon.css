@@ -1,0 +1,411 @@
+@charset "utf-8";
+/* CSS Document */
+html{ height: 100%}
+body{ min-height: 100%; position: relative;}
+body{font-family: "FZLTTHK GBK1 0","FZYouHK_512B","微软雅黑","宋体",Arial;}
+
+.themec{ color:#0071b4;}
+.themebgc{ background-color:#0071b4;}
+.themebdc{ border-color: #0071b4;}
+
+/*边距*/
+.ml2{ margin-left: 2px; }
+.ml5{ margin-left: 5px; }
+.ml8{ margin-left: 8px; }
+.ml10{ margin-left: 10px; }
+.ml12{ margin-left: 12px; }
+.ml15{ margin-left: 15px; }
+.ml20{ margin-left: 20px; }
+.ml21{ margin-left: 21px; }
+.ml25{ margin-left: 25px; }
+.ml27{ margin-left: 27px; }
+.ml30{ margin-left: 30px; }
+.ml40{ margin-left: 40px; }
+.ml50{ margin-left: 50px; }
+.ml60{ margin-left: 60px; }
+.ml65{ margin-left: 65px; }
+.ml68{ margin-left: 68px; }
+.ml80{ margin-left: 80px; }
+.ml105{ margin-left:105px; }
+.ml125{ margin-left:125px; }
+.ml-20{ margin-left: -20px; }
+.mt3{ margin-top: 3px; }
+.mt5{ margin-top: 5px; }
+.mt7{ margin-top: 7px; }
+.mt8{ margin-top: 8px; }
+.mt9{ margin-top: 9px; }
+.mt10{ margin-top: 10px; }
+.mt12{ margin-top: 12px; }
+.mt14{ margin-top: 14px; }
+.mt15{ margin-top: 15px; }
+.mt18{ margin-top: 18px; }
+.mt20{ margin-top: 20px; }
+.mt23{ margin-top: 23px; }
+.mt25{ margin-top: 25px; }
+.mt30{ margin-top: 30px; }
+.mt35{ margin-top: 35px; }
+.mt40{ margin-top: 40px; }
+.mt45{ margin-top: 45px; }
+.mt50{ margin-top: 50px; }
+.mt55{ margin-top: 55px; }
+.mt60{ margin-top: 60px; }
+.mt70{ margin-top: 70px; }
+.mt80{ margin-top: 80px; }
+.mt90{ margin-top: 90px; }
+.mt110{ margin-top: 110px; }
+.mt120{ margin-top: 120px; }
+.mr2{ margin-right: 2px; }
+.mr5{ margin-right: 5px; }
+.mr7{ margin-right: 7px; }
+.mr8{ margin-right: 8px; }
+.mr10{ margin-right: 10px; }
+.mr15{ margin-right: 15px; }
+.mr20{ margin-right: 20px; }
+.mr25{ margin-right: 25px; }
+.mr30{ margin-right: 30px; }
+.mr40{ margin-right: 40px; }
+.mr50{ margin-right: 50px; }
+.mb5{ margin-bottom: 5px; }
+.mb10{ margin-bottom: 10px; }
+.mb15{ margin-bottom: 15px; }
+.mb20{ margin-bottom: 20px; }
+.mb30{ margin-bottom: 30px; }
+.pt15{ padding-top: 15px; }
+.pt20{ padding-top: 20px; }
+.pb5{ padding-bottom: 5px; }
+
+/*鼠标变手型*/
+.pointer{ cursor: pointer; }
+
+.main{
+	width:100%;
+	width:expression(document.body.clientWidth <= 1100? "1100px": "auto");
+    min-width:1100px;
+    padding-bottom: 50px;
+}
+
+/*整体大结构*/
+.content{ 
+	width:1100px; 
+	margin:0 auto; 
+	background:#fff;
+}
+.padd{ padding:0 36px 60px 36px;}
+
+/*面包屑开始*/
+.BreadcrumbNav{ 
+	line-height:44px; 
+	height:44px; 
+	font-size:12px;
+	font-family:"宋体"; 
+	color:#000;
+}
+.BreadcrumbNav a{ color:#000;}
+
+/*统一1px的边框*/
+.pub_border{ border:1px #dddddd solid;}
+.column_pub_border{ border:0;}
+
+/*登录页面公共部分*/
+.oneColumn{ padding: 40px 150px 50px 150px; }
+
+/*样式小标*/
+.red-star{
+	margin-right: 3px;
+	color: #ee6664;
+    font-weight: normal;
+    vertical-align: middle;
+}
+
+/*蓝底白字按钮宽400按钮*/
+.blue-button400{
+	width: 400px;
+	height: 38px;
+	border: 0;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 18px;
+	text-align: center;
+	line-height: 40px;
+	cursor: pointer;
+	font-family: "FZLTTHK GBK1 0","FZYouHK_512B","微软雅黑","宋体",Arial;
+}
+.blue-button400:hover{
+	background-color: #5087b2;
+}
+/*返回上一步按钮*/
+.gray-button400{
+	width: 400px;
+	height: 35px;
+	background-color: #e1e1e1;
+	border: 0;
+	border-radius: 5px;
+	color: #000;
+	font-size: 16px;
+	text-align: center;
+	line-height: 35px;
+	font-weight: bold;
+	cursor: pointer;
+	font-family: "FZLTTHK GBK1 0","FZYouHK_512B","微软雅黑","宋体",Arial;
+}
+.gray-button400:hover{
+	background-color: #cccccc;
+}
+/*注册按钮*/
+.white-button400{
+	width: 400px;
+	height: 38px;
+	border-width: 1px;
+	border-style:solid;
+	border-radius: 5px;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 38px;
+	cursor: pointer;
+	background-color: #FFF;
+	font-family: "FZLTTHK GBK1 0","FZYouHK_512B","微软雅黑","宋体",Arial;
+}
+.white-button400:HOVER{
+	color: #5087b2;
+}
+/*获取验证码按钮*/
+.code-button{
+	width: 136px;
+	height: 35px;
+	line-height:35px;
+	border: 1px #cccccc solid;
+	border-radius: 5px;
+	text-align: center;
+	font-size: 14px;
+	color: #666666;
+	cursor: pointer;
+	background-color: #FFF;
+	vertical-align: middle;
+	font-family: "FZLTTHK GBK1 0","FZYouHK_512B","微软雅黑","宋体",Arial;
+}
+.code-button:disabled{
+	background-color: #eeeeee;
+}
+/*弹出窗按钮样式*/
+.dialog-button{
+	width: 70px;
+	height: 25px;
+	border: 0;
+	border-radius: 2px;
+	color: #fff;
+	font-size: 12px;
+	text-align: center;
+	letter-spacing:1px;
+	line-height: 24px;
+	cursor: pointer;
+	font-family: "FZLTTHK GBK1 0","FZYouHK_512B","微软雅黑","宋体",Arial;
+}
+.dialog-button:HOVER{
+	background-color: #5087b2;
+}
+/*二维码刷新按钮样式*/
+.qr-button{
+	width: 70px;
+	height: 25px;
+	border: 0;
+	border-radius: 2px;
+	background-color: #3b99fc;
+	color: #fff;
+	font-size: 12px;
+	text-align: center;
+	letter-spacing:1px;
+	line-height: 24px;
+	cursor: pointer;
+	font-family: "FZLTTHK GBK1 0","FZYouHK_512B","微软雅黑","宋体",Arial;
+}
+.qr-button:HOVER{
+	background-color:#00a3d2;
+}
+
+/*下边框1px的div*/
+.pub-bottom-border{ border-bottom: 1px #c4c4c4 solid;}
+.pub-bottom-border-blue{ border-bottom: 1px #0071b4 solid;}
+/*虚线分割线*/
+.imaginary-line{
+	border-bottom: 1px #cbcbcb dashed;
+}
+/*输入框样式*/
+
+/*通用*/
+.import-div{
+	height: 30px;
+	position: relative;
+}
+.import-div input{
+	margin-top: 8px;
+	margin-left: 7px;
+	width: 350px;
+    height: 20px;
+    border: 0;
+	font-size: 15px;
+	font-family: "FZLTTHK GBK1 0","FZYouHK_512B","微软雅黑","宋体",Arial;
+	line-height: 20px;
+	background-color: #FFF;
+}
+.importcode-div{
+	height: 35px;
+}
+.importcode-div input{
+	margin-top: 13px;
+	margin-left: 10px;
+	width: 280px;
+    height: 20px;
+    border: 0;
+	font-size: 15px;
+	font-family: "FZLTTHK GBK1 0","FZYouHK_512B","微软雅黑","宋体",Arial;
+	line-height: 20px;
+	background-color: #FFF;
+}
+
+/*流程提示样式*/
+.flow-active {
+    color: #fff;
+    background-color: #0071b4;
+}
+.rectangle {
+    position: relative;
+    width: 200px;
+    text-align: center;
+    line-height: 36px;
+    font-size: 16px;
+    display: block;
+    float: left;
+    height: 36px;
+    background-color: #cfcfcf;
+}
+.rectangle.active {
+    color: #fff;
+    background-color: #0071b4;
+}
+.rectangle-4 {
+    width: 150px;
+}
+.rectangle-3{
+	width: 210px;
+}
+.right-move {
+    margin-left: 40px;
+}
+.active .triangle {
+    border-color: transparent transparent transparent #0071b4;
+}
+.active .triangle-cave {
+    border-color: #0071b4 #0071b4 #0071b4 transparent;
+}
+.triangle {
+    position: absolute;
+    right: -36px;
+    top: 0;
+    display: block;
+    width: 0;
+    height: 0;
+    border-width: 18px;
+    border-style: dashed dashed dashed solid;
+    border-color: transparent transparent transparent #cfcfcf;
+}
+.triangle-cave {
+    position: absolute;
+    left: -36px;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-width: 18px;
+    border-style: solid solid solid dashed;
+    border-color: #cfcfcf #cfcfcf #cfcfcf transparent;
+}
+
+/*验证身份选择方式*/
+.change-way-area{
+	width: 100%;
+	height: 120px;
+	border: 1px #004e97 solid;
+	border-radius: 5px;
+}
+.change-way-area:hover{
+	background-color: #edf6fd;
+}
+.change-way-img{
+	margin-left:35px;
+	margin-top: 37px;
+}
+.change-way-message{
+	margin-left: 40px;
+	margin-top: 37px;
+}
+.change-way-message-title{
+	font-size: 16px;
+	font-weight: bold;
+}
+.change-way-message-main{
+	width: 480px;
+	font-size: 14px;
+	color: #83888e;
+}
+.change-button{
+	margin-top: 45px;
+	margin-right: 30px;
+	width: 75px;
+	height: 30px;
+	border-radius: 5px;
+	background-color: #00aaef;
+	color: #FFF;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 30px;
+	cursor: pointer;
+}
+.change-button:hover{
+	background-color: #015293;
+}
+
+/*IE8兼容 placeholder样式*/
+.placeholder{
+	color: #6d6d6d;
+}
+.input_msg {
+    color: #6d6d6d;
+    font-size: 15px;
+    line-height: 34px;
+    padding-left: 10px;
+    position: absolute;
+    left: 0px;
+}
+.h_msg .input_msg {
+    display: none;
+}
+
+/*下拉框样式*/
+select{
+	border: solid 1px #cdcdcd;
+}
+.pselect{
+	width: 97px;
+	height: 27px;
+	line-height: 27px;
+	font-size: 14px;
+	color: #313232;
+	text-indent: 5px;
+	vertical-align: middle;
+	font-family: "FZLTTHK GBK1 0","FZYouHK_512B","微软雅黑","宋体",Arial;
+}
+
+.findpwd{
+	color: #0071b4;
+	cursor: pointer;
+	font-weight: bold;
+}
+/*弹出窗样式*/
+/* .hintdiv{
+	position: absolute;
+	top: 200px;
+	width: 240px;
+	height: 150px;
+} */
+

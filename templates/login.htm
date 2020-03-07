@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<!-- saved from url=(0030)https://user.news.cn/sso/login -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link href="https://user.news.cn/xhw_favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <title>个人登录</title>
+    <meta http-equiv="X-UA-Compatible" content="edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/pbase.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/pcommon.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/puser_login.css') }}">
+    <script type="text/javascript">
+        var pm = pm || {};
+        pm.path = "/";
+        pm.path = pm.path.split(';')[0];
+        if (self.location != top.location) {
+            top.location = self.location;
+        }
+    </script>
+</head>
+<body>
+<div class="main">
+
+    <script type="text/javascript">
+        var servicecode = '';
+        var gourl = '';
+        var tokenid = 'null';
+        var showname = 'null';
+    </script>
+    <style>
+        .show {
+            display: block;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .fl {
+            float: left;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        .clear {
+            clear: both;
+            height: 0;
+            font-size: 0;
+            overflow: hidden;
+        }
+
+        #topHeader {
+            height: 32px;
+            text-align: center;
+            border-bottom: 1px solid #c9c9ca;
+            background: #f9f7f4;
+        }
+
+        #topHeader .top {
+            width: 1000px;
+            margin: 0 auto;
+            height: inherit;
+            padding: 0;
+            border: 0;
+            outline: none;
+            list-style: none;
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        #topHeader a {
+            float: left;
+            height: 32px;
+            line-height: 32px;
+            color: #000;
+            margin: 0 10px;
+            font-size: 12px;
+            cursor: pointer;
+            outline: none;
+            text-decoration: none;
+            padding: 0;
+            font-weight: normal;
+            font-style: normal;
+            font-family: "宋体";
+        }
+
+        .widthMain {
+            margin: 0 auto;
+            width: 1000px;
+            padding: 10px;
+        }
+
+        .xhw-logo-font {
+            font-size: 18px;
+            line-height: 85px;
+            color: #0272b4;
+            margin-left: 15px;
+            font-weight: bold;
+        }
+
+        .login-info {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+
+        .login-info p {
+            font-size: 14px;
+        }
+
+        .xhw-bulefont {
+            color: #0272b4;
+        }
+    </style>
+    <!--头部-->
+    <div class="widthMain" style="border-bottom: 1px solid #0272b4; position: relative;">
+        <a class="fl" href="" target="_blank"><img alt="logo" src="{{ url_for('static',filename='img/logo.jpg') }}"></a>
+        <p class="fl xhw-logo-font">全能的django</p>
+        <div class="login-info">
+            <p class="hide" id="isreg_show">已有账号，<span class="xhw-bulefont pointer goto_xhwlogin">请登录</span></p>
+            <p class="hide" id="notlogin_show"><span class="xhw-bulefont pointer goto_xhwlogin">登录</span><span
+                    class="xhw-bulefont">&nbsp;|&nbsp;</span><span class="xhw-bulefont pointer"
+                                                                   id="goto_xhwreg">注册</span></p>
+            <p class="hide" id="login_show">您好，<span class="xhw-bulefont" id="xhwlogin_name"></span></p>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript">
+        var xhwloginUrl = "https://user.news.cn/sso/login";
+        var xhwregUrl = "https://user.news.cn/user/reg";
+        $(function () {
+            //判断是否登录
+            var hrefurl = window.location.href;
+            if (hrefurl.indexOf("/sso/login") > 0) {
+                return;
+            } else if (hrefurl.indexOf("/reg") > 0) {
+                isregshow();
+            } else if (tokenid == 'null' || tokenid == '') {
+                notloginshow();
+            } else {
+                loginshow(showname);
+            }
+        })
+
+
+        //注册时显示
+        function isregshow() {
+            $('#notlogin_show').hide();
+            $('#login_show').hide();
+            $('#isreg_show').show();
+        }
+
+        $('.goto_xhwlogin').click(function () {
+            window.location.href = xhwloginUrl;
+        })
+
+        //未登录显示
+        function notloginshow() {
+            $('#isreg_show').hide();
+            $('#login_show').hide();
+            $('#notlogin_show').show();
+        }
+
+        $('#goto_xhwreg').click(function () {
+            window.open(xhwregUrl);
+        })
+
+        //登录时显示,需传入showname
+        function loginshow(showname) {
+            $('#xhwlogin_name').text(showname);
+            $('#isreg_show').hide();
+            $('#notlogin_show').hide();
+            $('#login_show').show();
+        }
+    </script>
+    <!--end-->
+
+    <!--主体正文开始-->
+    <div class="login-bg">
+        <div class="login-div" style="background: url('/static/img/xhw_inset.png') no-repeat -10px -10px;">
+            <form action="" method="post">
+                <div class="fr login-area">
+                    <div class="login-way">
+                        <span class="login-way-active pointer">密码登录</span>
+                <!-- <span class="ml80 pointer">扫码登录</span> -->
+            </div>
+            <div class="loginpwd-way">
+                <div style="position: relative;">
+                    <input class="logininfo mt15" name="username" id="loginname" type="text" maxlength="60" placeholder="手机号码/邮箱/用户名">
+                </div>
+                <div style="position: relative;">
+                    <input class="logininfo mt15" name="password" id="password" type="password" placeholder="请输入密码">
+                </div>
+                <div id="div_verifycode" class="mt15 hide">
+                    <input style="width:200px;" maxlength="4" class="logininfo num" id="verifycode" type="text"
+                           placeholder="请输入验证码">
+                    <div class="fr pointer" id="code"
+                         style="width: 80px; height: 35px; background-image: url(&quot;/sso/verifyimg_edit?rd=0.7816013449687933&quot;);"></div>
+                </div>
+                <span class="fl mt15 errorinfo" id="errorinfo"></span>
+                <!-- <div class="fl mt15"><input type="checkbox" value="tendays" /><span class="tenday-login">&nbsp;十天内免登陆</span></div> -->
+                <span class="fr mt15 mr5 forgetpwd">忘记密码？</span>
+                <div class="clear"></div>
+                {% for message in get_flashed_messages() %}
+                            <div class=flash>{{ message }}</div>
+                {% endfor %}
+                <input class="mt15 btn-login themebgc" id="btn-login" style="color: #FFF;" value="登录" type="submit">
+                <input class="mt15 btn-login" id="btn-reg" style="color: #0071b4; background-color: #e4f3fb;" value="注册"
+                       type="button">
+                <script>
+                    var ong = document.getElementById('btn-reg')
+                        ong.onclick = function () {
+                              window.location.href="/register/"
+                        }
+
+                </script>
+                <div class="fr mt15 third-party-login">
+
+                    <span class="third-party-login-span fl ml10 mr10">|</span>
+                    <span class="third-party-login-span fl pointer" id="qq"><img class="fl mr5" src="/static/img/qq.png"
+                                                                                 alt="QQ" title="QQ">QQ</span>
+
+
+                    <span class="third-party-login-span fl ml10 mr10">|</span>
+                    <span class="third-party-login-span fl pointer" id="weibo"><img class="fl mr5"
+                                                                                    src="/static/img/weibo.png" alt="微博"
+                                                                                    title="微博">微博</span>
+
+
+                    <span class="third-party-login-span fl ml10 mr10">|</span>
+                    <span class="third-party-login-span fl pointer" id="wechat"><img class="fl mr5"
+                                                                                     src="/static/img/weixin.png"
+                                                                                     alt="微信" title="微信">微信</span>
+
+
+                </div>
+            </div>
+            <div class="loginscan-way hide">
+
+            </div>
+        </div>
+        </form>
+        <div class="clear"></div>
+    </div>
+    <input id="servicecode" type="hidden" name="servicecode" value="">
+    <input id="gourl" type="hidden" name="gourl" value="">
+    <input id="extargs" type="hidden" name="extargs" value="">
+</div>
+</div>
+{#<script type="text/javascript" src="/static/js/jquery.min.js"></script>#}
+{#<script type="text/javascript" src="/static/js/jsencrypt.js"></script>#}
+{#<script type="text/javascript" src="/static/js/pmExtJquery.js"></script>#}
+{#<script type="text/javascript" src="/static/js/placeholderfriend.js"></script>#}
+{##}
+{##}
+{#<script type="text/javascript" src="/static/js/alert_easydialog.js"></script>#}
+{##}
+{##}
+{#<script type="text/javascript" src="/static/js/dialogpage.js"></script>#}
+{##}
+{##}
+{#<script type="text/javascript" src="./登录_files/jquery.validate.js"></script>#}
+{#<script type="text/javascript" src="./登录_files/jquery.metadata.js"></script>#}
+{##}
+{#<script type="text/javascript" src="./登录_files/messages_cn.js"></script>#}
+{##}
+{#<script type="text/javascript" src="./登录_files/additional-methods.js"></script>#}
+{##}
+{##}
+{#<script type="text/javascript" src="./登录_files/pbase.js"></script>#}
+{##}
+{##}
+{#<script type="text/javascript">#}
+{##}
+{#    var verifyurl = "/sso/verifyimg_edit";#}
+{#    var loginurl = "/sso/login";#}
+{#    var sendPhonecodeurl = "/sso/sendPhonecode";#}
+{#    var phoneloginurl = "/sso/phonelogin";#}
+{#    var qrcodeurl = "/sso/qrlogincode";#}
+{#    var getqrcodeurl = "/sso/getqrcode";#}
+{#    var checkgvrpurl = "/user/checkgvrp";#}
+{#    //人工申诉#}
+{#    var problemfeedbackUrl = "/user/problemfeedback";#}
+{#    //用户激活(步骤一)#}
+{#    var activeFinduserUrl = "/user/activeFinduser";#}
+{#    //用户激活页面跳转#}
+{#    var activeUrl = "/user/active";#}
+{##}
+{#    var qrststusurl = "/sso/qrstatus";#}
+{#    var k = '';#}
+{##}
+{#    $('#code').click(function () {#}
+{#        var url = verifyurl + "?rd=" + Math.random();#}
+{#        $(this).css("background-image", "url('" + url + "')");#}
+{#    })#}
+{#    $('#code').click();#}
+{##}
+{#    $(function () {#}
+{#        var apperrcode = "";#}
+{#        var apperrmsg = "";#}
+{#        if (apperrmsg) {#}
+{#            showerror(apperrmsg);#}
+{#        }#}
+{#    })#}
+{##}
+{#    $('#loginname,#verifycode').blur(function () {#}
+{#        var value = $(this).val();#}
+{#        if (value.indexOf(' ') > -1) {#}
+{#            $(this).val($.trim(value));#}
+{#        }#}
+{#    })#}
+{#    var interval;#}
+{#    $('#refreshQa').click(function () {#}
+{#        $.post(getqrcodeurl, function (data) {#}
+{#            k = data;#}
+{#            $('#qr').attr("src", qrcodeurl + "?k=" + data);#}
+{#            $('.mask').hide();#}
+{#            $('.status_over').hide();#}
+{#            interval = setInterval('getQrStatus()', 3000);#}
+{#        })#}
+{#    })#}
+{#    $('#refreshQa').click();#}
+{##}
+{#    //打开注册协议弹窗#}
+{#    var openregprotocol = function () {#}
+{#        openDialogPage({#}
+{#            width: 750,#}
+{#            height: 550,#}
+{#            title: '用户注册协议',#}
+{#            url: "/user/regprotocol",#}
+{#            noFn: function () {#}
+{#                loginsuccess();#}
+{#            },#}
+{#            callback: function () {#}
+{#                loginsuccess();#}
+{#            }#}
+{#        })#}
+{#    }#}
+{#    //登录点击事件#}
+{#    $("#btn-login").click(function () {#}
+{#        var loginname = $('#loginname').val();#}
+{#        var password = $('#password').val();#}
+{#        var verifycode = $('#verifycode').val();#}
+{#        if (loginname == "" && password == "") {#}
+{#            showerror('请输入账号和密码');#}
+{#            return;#}
+{#        }#}
+{#        if (loginname == "") {#}
+{#            showerror('请输入账号');#}
+{#            return;#}
+{#        }#}
+{#        if (password == "") {#}
+{#            showerror('请输入密码');#}
+{#            return;#}
+{#        }#}
+{#        if ($('#verifycode').is(":hidden") == false) {#}
+{#            if (verifycode == "") {#}
+{#                showerror('请输入验证码');#}
+{#                return;#}
+{#            }#}
+{#            if (verifycode.length < 4) {#}
+{#                showerror('请输入4位验证码');#}
+{#                return;#}
+{#            }#}
+{#        }#}
+{#        if (dosubmit()) {#}
+{#            return;#}
+{#        }#}
+{#        $.post(loginurl, {#}
+{#            'loginname': loginname,#}
+{#            'password': pm.encode.RSA(password),#}
+{#            'verifycode': verifycode#}
+{#        }, function (data) {#}
+{#            finishsubmit();#}
+{#            if (data.code == "0") {#}
+{#                if ("0" == "1") {#}
+{#                    $.post(checkgvrpurl, {'loginname': loginname}, function (date) {#}
+{#                        if (date.code == "0") {#}
+{#                            openDialogAlert({#}
+{#                                width: 300,#}
+{#                                height: 150,#}
+{#                                title: '提示',#}
+{#                                content: '<img src="/static/images/client/pc/info_icon.png"><span>用户注册协议已修改，是否查看？</span>',#}
+{#                                yesFn: openregprotocol,#}
+{#                                noFn: function () {#}
+{#                                    loginsuccess();#}
+{#                                },#}
+{#                                callback: function () {#}
+{#                                }#}
+{#                            })#}
+{#                        } else {#}
+{#                            loginsuccess();#}
+{#                        }#}
+{#                    })#}
+{#                } else {#}
+{#                    loginsuccess();#}
+{#                }#}
+{##}
+{#            } else if (data.code == "user_status_inactivated") {#}
+{#                showerror(data.msg + '，<span class="themec pointer" onclick="gouseractive()">前往激活</span>。');#}
+{#                $('#code').click();#}
+{#            } else {#}
+{#                showerror(data.msg);#}
+{#                var attr = data.attr;#}
+{#                if (attr == 'imgcode') {#}
+{#                    showImgcode();#}
+{#                } else {#}
+{#                    hideImgcode();#}
+{#                }#}
+{#                // 只要返回 错误码里面 含有'pwd_weak' 或者 'pwdrule'时就 跳转密码重置界面#}
+{#                if (data.code.indexOf("pwd_weak") > -1 || data.code.indexOf("pwdrule") > -1) {#}
+{#                    alertmsg(data.msg)#}
+{#                }#}
+{#                //根据各种情况分别处理#}
+{#                $('#code').click();#}
+{#            }#}
+{#        });#}
+{#    });#}
+{##}
+{#    //开始账号激活流程#}
+{#    function gouseractive() {#}
+{#        var loginname = $('#loginname').val();#}
+{#        var password = $('#password').val();#}
+{#        if (loginname == "" && password == "") {#}
+{#            showerror('请输入账号和密码');#}
+{#            return;#}
+{#        }#}
+{#        if (loginname == "") {#}
+{#            showerror('请输入账号');#}
+{#            return;#}
+{#        }#}
+{#        if (password == "") {#}
+{#            showerror('请输入密码');#}
+{#            return;#}
+{#        }#}
+{#        //账号激活页面跳转#}
+{#        if (dosubmit()) {#}
+{#            return;#}
+{#        }#}
+{#        $.post(activeFinduserUrl, {'account': loginname, 'password': pm.encode.RSA(password)}, function (data) {#}
+{#            finishsubmit();#}
+{#            if (data.code == "0") {#}
+{#                var serialnum = data.attr.serialnum;#}
+{#                var redirectUrl = activeUrl + "?serialnum=" + serialnum;#}
+{#                var servicecode = $('#servicecode').val();#}
+{#                var gourl = $('#gourl').val();#}
+{#                var extargs = $('#extargs').val();#}
+{#                if (servicecode) {#}
+{#                    redirectUrl = redirectUrl + "&servicecode=" + servicecode;#}
+{#                    if (gourl) {#}
+{#                        redirectUrl = redirectUrl + "&gourl=" + escape(gourl);#}
+{#                    }#}
+{#                    if (extargs) {#}
+{#                        redirectUrl = redirectUrl + "&extargs=" + escape(extargs);#}
+{#                    }#}
+{#                }#}
+{#                window.location.href = redirectUrl;#}
+{#            } else {#}
+{#                showerror(data.msg);#}
+{#            }#}
+{#        });#}
+{#    }#}
+{##}
+{#    //确定按钮#}
+{#    var btnFn = function () {#}
+{#        var resetPwdUrl = "/user/forgetpwd";#}
+{#        var servicecode = $('#servicecode').val();#}
+{#        var gourl = $('#gourl').val();#}
+{#        var extargs = $('#extargs').val();#}
+{#        if (servicecode) {#}
+{#            resetPwdUrl = resetPwdUrl + "?servicecode=" + servicecode;#}
+{#            if (gourl) {#}
+{#                resetPwdUrl = resetPwdUrl + "&gourl=" + escape(gourl);#}
+{#            }#}
+{#            if (extargs) {#}
+{#                resetPwdUrl = resetPwdUrl + "&extargs=" + escape(extargs);#}
+{#            }#}
+{#        }#}
+{#        window.location.href = resetPwdUrl;#}
+{#    };#}
+{##}
+{#    //弹出窗口#}
+{#    function alertmsg(msg) {#}
+{#        $(document.body).css('overflow', 'hidden');#}
+{#        openDialogPagealert({#}
+{#            width: 300,#}
+{#            height: 150,#}
+{#            title: "升级密码提示",#}
+{#            content: '<img src="/static/images/client/pc/info_icon.png"><span>' + msg + '</span>',#}
+{#            yesFn: btnFn,#}
+{#            noFn: false,#}
+{#            callback: function () {#}
+{#                $(document.body).css('overflow', 'auto');#}
+{#            }#}
+{#        })#}
+{#    }#}
+{##}
+{#    //显示错误信息#}
+{#    function showerror(msg) {#}
+{#        $('#errorinfo').html(msg);#}
+{#        $('#errorinfo').show();#}
+{#    }#}
+{##}
+{#    //是否需要验证码#}
+{#    var isneedcode = 'false';#}
+{#    if (isneedcode == 'true') {#}
+{#        showImgcode();#}
+{#    }#}
+{##}
+{##}
+{#    //隐藏图片验证码#}
+{#    function hideImgcode() {#}
+{#        $('#div_verifycode,#verifycode').addClass("hide");#}
+{#    }#}
+{##}
+{#    //显示图片验证码#}
+{#    function showImgcode() {#}
+{#        $('#div_verifycode,#verifycode').removeClass("hide");#}
+{#    }#}
+{##}
+{#    //登录成功后的操作#}
+{#    function loginsuccess(ticket) {#}
+{#        var redirectUrl = loginurl;#}
+{#        var servicecode = $('#servicecode').val();#}
+{#        var gourl = $('#gourl').val();#}
+{#        var extargs = $('#extargs').val();#}
+{#        if (ticket) {#}
+{#            redirectUrl = redirectUrl + "?ticket=" + ticket + "&";#}
+{#        } else {#}
+{#            redirectUrl = redirectUrl + "?";#}
+{#        }#}
+{#        if (servicecode) {#}
+{#            redirectUrl = redirectUrl + "servicecode=" + servicecode;#}
+{#            if (gourl) {#}
+{#                redirectUrl = redirectUrl + "&gourl=" + escape(gourl);#}
+{#            }#}
+{#            if (extargs) {#}
+{#                redirectUrl = redirectUrl + "&extargs=" + escape(extargs);#}
+{#            }#}
+{#        }#}
+{#        window.location.href = redirectUrl;#}
+{#    }#}
+{##}
+{#    //在输入框内按下回车触发事件#}
+{#    $('#loginname, #password, #verifycode').keydown(function (event) {#}
+{#        if (event.keyCode == 13) {#}
+{#            $("#btn-login").click();#}
+{#        }#}
+{#    })#}
+{##}
+{#    //第三方快捷登录（支付宝）#}
+{#    $('#alipay').click(function () {#}
+{#        var alipaythirdauthUrl = "/alipayuser/thirdlogin";#}
+{#        var servicecode = $('#servicecode').val();#}
+{#        var gourl = $('#gourl').val();#}
+{#        var extargs = $('#extargs').val();#}
+{#        if (servicecode) {#}
+{#            alipaythirdauthUrl = alipaythirdauthUrl + "?servicecode=" + servicecode;#}
+{#            if (gourl) {#}
+{#                alipaythirdauthUrl = alipaythirdauthUrl + "&gourl=" + escape(gourl);#}
+{#            }#}
+{#            if (extargs) {#}
+{#                alipaythirdauthUrl = alipaythirdauthUrl + "&extargs=" + escape(extargs);#}
+{#            }#}
+{#        }#}
+{#        window.location.href = alipaythirdauthUrl;#}
+{#    });#}
+{##}
+{#    //第三方快捷登录（微信）#}
+{#    $('#wechat').click(function () {#}
+{#        var wechatthirdauthUrl = "/wechatuser/thirdlogin";#}
+{#        var servicecode = $('#servicecode').val();#}
+{#        var gourl = $('#gourl').val();#}
+{#        var extargs = $('#extargs').val();#}
+{#        if (servicecode) {#}
+{#            wechatthirdauthUrl = wechatthirdauthUrl + "?servicecode=" + servicecode;#}
+{#            if (gourl) {#}
+{#                wechatthirdauthUrl = wechatthirdauthUrl + "&gourl=" + escape(gourl);#}
+{#            }#}
+{#            if (extargs) {#}
+{#                wechatthirdauthUrl = wechatthirdauthUrl + "&extargs=" + escape(extargs);#}
+{#            }#}
+{#        }#}
+{#        window.location.href = wechatthirdauthUrl;#}
+{#    });#}
+{##}
+{#    //第三方快捷登录（微博）#}
+{#    $('#weibo').click(function () {#}
+{#        var webothirdauthUrl = "/weibouser/thirdlogin";#}
+{#        var servicecode = $('#servicecode').val();#}
+{#        var gourl = $('#gourl').val();#}
+{#        var extargs = $('#extargs').val();#}
+{#        if (servicecode) {#}
+{#            webothirdauthUrl = webothirdauthUrl + "?servicecode=" + servicecode;#}
+{#            if (gourl) {#}
+{#                webothirdauthUrl = webothirdauthUrl + "&gourl=" + escape(gourl);#}
+{#            }#}
+{#            if (extargs) {#}
+{#                webothirdauthUrl = webothirdauthUrl + "&extargs=" + escape(extargs);#}
+{#            }#}
+{#        }#}
+{#        window.location.href = webothirdauthUrl;#}
+{#    });#}
+{##}
+{#    //第三方快捷登录（QQ）#}
+{#    $('#qq').click(function () {#}
+{#        var qqthirdauthUrl = "/qquser/thirdlogin";#}
+{#        var servicecode = $('#servicecode').val();#}
+{#        var gourl = $('#gourl').val();#}
+{#        var extargs = $('#extargs').val();#}
+{#        if (servicecode) {#}
+{#            qqthirdauthUrl = qqthirdauthUrl + "?servicecode=" + servicecode;#}
+{#            if (gourl) {#}
+{#                qqthirdauthUrl = qqthirdauthUrl + "&gourl=" + escape(gourl);#}
+{#            }#}
+{#            if (extargs) {#}
+{#                qqthirdauthUrl = qqthirdauthUrl + "&extargs=" + escape(extargs);#}
+{#            }#}
+{#        }#}
+{#        window.location.href = qqthirdauthUrl;#}
+{#    });#}
+{##}
+{#    //跳转至个人注册#}
+{#    $('#btn-reg').click(function () {#}
+{#        var redirectUrl = "/user/reg";#}
+{#        var servicecode = $('#servicecode').val();#}
+{#        var gourl = $('#gourl').val();#}
+{#        var extargs = $('#extargs').val();#}
+{#        if (servicecode) {#}
+{#            redirectUrl = redirectUrl + "?servicecode=" + servicecode;#}
+{#            if (gourl) {#}
+{#                redirectUrl = redirectUrl + "&gourl=" + escape(gourl);#}
+{#            }#}
+{#            if (extargs) {#}
+{#                redirectUrl = redirectUrl + "&extargs=" + escape(extargs);#}
+{#            }#}
+{#        }#}
+{#        window.location.href = redirectUrl;#}
+{#    });#}
+{##}
+{#    //忘记密码#}
+{#    $('body').on("click", ".forgetpwd,.findpwd", function () {#}
+{#        var redirectUrl = "/user/forgetpwd";#}
+{#        var servicecode = $('#servicecode').val();#}
+{#        var gourl = $('#gourl').val();#}
+{#        var extargs = $('#extargs').val();#}
+{#        if (servicecode) {#}
+{#            redirectUrl = redirectUrl + "?servicecode=" + servicecode;#}
+{#            if (gourl) {#}
+{#                redirectUrl = redirectUrl + "&gourl=" + escape(gourl);#}
+{#            }#}
+{#            if (extargs) {#}
+{#                redirectUrl = redirectUrl + "&extargs=" + escape(extargs);#}
+{#            }#}
+{#        }#}
+{#        window.location.href = redirectUrl;#}
+{#    });#}
+{##}
+{#</script>#}
+
+
+<style>
+    .adBottom {
+        background: #FFF;
+        padding: 20px 0;
+    }
+
+    .footer {
+        font-size: 12px;
+        font-family: "宋体";
+        color: #454545;
+        line-height: 22px;
+        padding: 10px 0 30px 0;
+        background: #FFF;
+        text-align: center;
+    }
+</style>
+<div id="bottomBody">
+    <div class="adBottom domPC">
+        <div class="widthMain"></div>
+    </div>
+    <div class="domMobile"></div>
+    <div class="footer">
+        <p>Copyright © 2000 - 2018 XINHUANET.com　All Rights Reserved.</p>
+        <p>制作单位：新华网股份有限公司　　版权所有 新华网股份有限公司</p>
+    </div>
+</div>
+
+
+
+</body>
+</html>
