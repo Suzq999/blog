@@ -124,8 +124,8 @@
               <h3 class="h6">Tags</h3>
             </header>
             <ul class="list-inline">
-                {% for j in tags1 %}
-              <li class="list-inline-item"><a href="#" class="tag">{{ j.name }}</a></li>
+                {% for tag in tags %}
+              <li class="list-inline-item"><a href="{{ url_for('bp.tag',tid=tag.tid) }}" class="tag">{{ tag.name }}</a></li>
                 {% endfor %}
             </ul>
           </div>

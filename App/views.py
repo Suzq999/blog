@@ -24,6 +24,23 @@ def home():
     # categories = Category.query.all()
     return render_template("index.html", **locals())
 
+# 2.1 tag跳转
+@bp.route('/tag/')
+@bp.route('/tag/<int:tid>')
+def tag(tid=1):
+    articles = db.session.query(Article, Tag).filter(Article.aid == Tag.aid, Tag.tid == tid).all()
+    print(articles)
+    article_num = len(articles)
+
+    categories = Category.query.all()
+
+    three_articles = Article.query.order_by(-Article.create_time).all()[:3]
+
+    tags = Tag.query.all()
+    print(tags)
+    user = User.query.first()
+    return render_template('blog.html', **locals())
+
 
 # 2.分类的博客 cid
 @bp.route("/list/")
@@ -47,7 +64,7 @@ def list_article(cid=-1):
     three_articles = Article.query.order_by(-Article.create_time).all()[:3]
 
     # 标签
-    tags1 = Tag.query.all()
+    tags = Tag.query.all()
     # 改进 以下看是否有错
     # print(tags1)
     # for tag in tags1:
@@ -55,29 +72,22 @@ def list_article(cid=-1):
     # article_tag = db.session.query(Article, Tag).filter(Article.aid == Tag.aid, Tag.tid == tid).all()
     return render_template("blog.html", **locals())
 
-# 2.1 tid 试验能否成功
-# @bp.route("/list1/")
-# @bp.route("/list1/<int:tid>")
-# def list_article1(tid=-1):
-#     if tid < 0:  # 查询默认
-#         tag = Tag.query.first()
-#         tid = tag.tid
-#
-#     # 标签
-#     article_tag = db.session.query(Article, Tag).filter(Article.aid == Tag.aid, Tag.tid == tid).all()
-#
-#
-#     tags = Tag.query.all()
-#     print(tags)
-#     for i in tags:
-#         print(i)
-#     user = User.query.first()
-#
-#     # 最近3篇文章
-#     three_articles = Article.query.order_by(-Article.create_time).all()[:3]
-#
-#
-#     return render_template("blog.html", **locals())
+# 3.1 tag跳转
+@bp.route('/tag1/')
+@bp.route('/tag1/<int:tid1>')
+def tag1(tid1=1):
+    articles = db.session.query(Article, Tag).filter(Article.aid == Tag.aid, Tag.tid == tid1).all()
+    print(articles)
+    article_num = len(articles)
+
+    categories = Category.query.all()
+
+    three_articles = Article.query.order_by(-Article.create_time).all()[:3]
+
+    tags1 = Tag.query.all()
+    print(tags1)
+    user = User.query.first()
+    return render_template('post.html', **locals())
 
 
 # 3.详细的一篇博客
